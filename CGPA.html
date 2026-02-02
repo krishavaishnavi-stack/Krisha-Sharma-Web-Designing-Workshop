@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #0077cc;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        input {
+            width: 50px;
+            padding: 5px;
+            margin: 5px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CGPA Calculator</h1>
+
+    <div class="container">
+        <p>Enter grades and credits for each subject:</p>
+
+        <div id="subjects">
+            <div>
+                <input type="number" placeholder="Grade" class="grade" min="0" max="10">
+                <input type="number" placeholder="Credits" class="credit" min="1">
+            </div>
+        </div>
+
+        <button onclick="addSubject()">Add Subject</button>
+        <button onclick="calculateCGPA()">Calculate CGPA</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function addSubject() {
+            const subjectsDiv = document.getElementById('subjects');
+            const newSubject = document.createElement('div');
+            newSubject.innerHTML = `
+                <input type="number" placeholder="Grade" class="grade" min="0" max="10">
+                <input type="number" placeholder="Credits" class="credit" min="1">
+            `;
+            subjectsDiv.appendChild(newSubject);
+        }
+
+        function calculateCGPA() {
+            const grades = document.getElementsByClassName('grade');
+            const credits = document.getElementsByClassName('credit');
+
+            let totalPoints = 0;
+            let totalCredits = 0;
+            let validInput = true;
+
+            for (let i = 0; i < grades.length; i++) {
+                const grade = parseFloat(grades[i].value);
+                const credit = parseFloat(credits[i].value);
+
+                if (isNaN(grade) || isNaN(credit) || grade < 0 || grade > 10 || credit <= 0) {
+                    validInput = false;
+                    break;
+                }
+
+                totalPoints += grade * credit;
+                totalCredits += credit;
+            }
+
+            if (!validInput || totalCredits === 0) {
+                document.getElementById('result').innerText = "Please enter valid grades and credits!";
+                return;
+            }
+
+            const cgpa = totalPoints / totalCredits;
+            document.getElementById('result').innerText = "Your CGPA is: " + cgpa.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
