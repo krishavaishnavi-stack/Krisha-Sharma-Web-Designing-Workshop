@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Joining Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 500px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0077cc;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        .confirmation {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e6f7ff;
+            border: 1px solid #0077cc;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Join Our NGO</h1>
+
+    <label for="name">Full Name</label>
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Enter your email">
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" placeholder="Enter your phone number">
+
+    <label for="age">Age</label>
+    <input type="number" id="age" min="10" placeholder="Enter your age">
+
+    <label for="gender">Gender</label>
+    <select id="gender">
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <label for="interest">Area of Interest</label>
+    <select id="interest">
+        <option value="">Select Area</option>
+        <option value="Education">Education</option>
+        <option value="Environment">Environment</option>
+        <option value="Healthcare">Healthcare</option>
+        <option value="Animal Welfare">Animal Welfare</option>
+        <option value="Community Service">Community Service</option>
+    </select>
+
+    <label for="message">Why do you want to join?</label>
+    <textarea id="message" rows="4" placeholder="Write your motivation..."></textarea>
+
+    <button onclick="submitForm()">Submit</button>
+
+    <div class="confirmation" id="confirmation"></div>
+</div>
+
+<script>
+    function submitForm() {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const age = document.getElementById('age').value;
+        const gender = document.getElementById('gender').value;
+        const interest = document.getElementById('interest').value;
+        const message = document.getElementById('message').value;
+
+        if (!name || !email || !phone || !age || !gender || !interest || !message) {
+            alert("Please fill all fields!");
+            return;
+        }
+
+        const confirmation = document.getElementById('confirmation');
+        confirmation.style.display = "block";
+        confirmation.innerHTML = `
+            <h3>Form Submitted Successfully!</h3>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            <p><strong>Age:</strong> ${age}</p>
+            <p><strong>Gender:</strong> ${gender}</p>
+            <p><strong>Area of Interest:</strong> ${interest}</p>
+            <p><strong>Motivation:</strong> ${message}</p>
+        `;
+    }
+</script>
+
+</body>
+</html>
