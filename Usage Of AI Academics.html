@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Usage Survey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .radio-group {
+            margin-top: 5px;
+        }
+
+        .radio-group input {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>AI Usage Survey</h2>
+        <form action="#" method="post">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label>Do you use AI in your academic life?</label>
+            <div class="radio-group">
+                <input type="radio" id="academicYes" name="academic" value="Yes" required>
+                <label for="academicYes">Yes</label>
+                <input type="radio" id="academicNo" name="academic" value="No">
+                <label for="academicNo">No</label>
+            </div>
+
+            <label>Do you use AI in your day-to-day life?</label>
+            <div class="radio-group">
+                <input type="radio" id="dailyYes" name="daily" value="Yes" required>
+                <label for="dailyYes">Yes</label>
+                <input type="radio" id="dailyNo" name="daily" value="No">
+                <label for="dailyNo">No</label>
+            </div>
+
+            <label for="aiTools">Which AI tools do you use? (Optional)</label>
+            <input type="text" id="aiTools" name="aiTools" placeholder="e.g., ChatGPT, Grammarly, Google AI">
+
+            <input type="submit" value="Submit Survey">
+        </form>
+    </div>
+</body>
+</html>
